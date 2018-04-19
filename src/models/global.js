@@ -16,11 +16,11 @@ export default {
     menus: [],
   },
   effects: {
-    // 鑾峰彇鑿滃崟
+    // 获取菜单
     *fetchMenus({ payload }, { put, call }) {
       const response = yield call(getUserMenu, payload);
       if (response && response.data) {
-        // 鏌ヨ鏁版嵁
+        // 查询数据
         yield put({
           type: 'updateState',
           payload: {

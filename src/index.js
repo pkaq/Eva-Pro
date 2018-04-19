@@ -23,7 +23,7 @@ app.use(createLoading());
 
 // 3. Register global model
 app.model(require('./models/global').default);
-// ä¸»é¢˜model
+// Ö÷Ìâmodel
 app.model(require('./core/theme/model/Theme').default);
 
 // 4. Router
