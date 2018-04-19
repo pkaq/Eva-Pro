@@ -1,4 +1,4 @@
-# PKAQ Design => Ant Design Pro
+PKAQ Design => Ant Design Pro
 
 ## 交流QQ群： 83864896
 
@@ -44,4 +44,4 @@ $ yarn start         # visit http://localhost:8000
 // 格式化代码
 yarn run prettier
 
-
+![snapshot](snapshot.jpg)

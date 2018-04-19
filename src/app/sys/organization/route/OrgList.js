@@ -229,7 +229,6 @@ export default class OrgList extends Component {
     ];
 
     const rowSelection = {
-      fixed: true,
       selectedRowKeys,
       onChange: selectedKeys => {
         this.handleSelectRows(selectedKeys);

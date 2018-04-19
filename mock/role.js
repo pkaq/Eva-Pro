@@ -1,68 +1,113 @@
 // 树形数据
-const data = [{
-  id: 1,
-  roleName: '交易系统管理员',
-  roleCode: 'deal_manager',
-  parentName: '',
-  children: [{
-    id: 11,
-    roleName: '订单操作员',
-    roleCode: 'deal_order_operator',
-    parentName: '交易系统管理员',
-  }, {
-    id: 12,
-    roleName: '对账员',
-    roleCode: 'deal_balance_operator',
-    parentName: '交易系统管理员',
-  }],
-}, {
-  id: 3,
-  roleName: '库存系统管理员',
-  roleCode: 'stock_manager',
-  parentName: '',
-}];
+const data = {
+  "data":{
+    "current":1,
+    "data":[
+      {
+        "code":"XTGL",
+        "id":"1",
+        "locked":false,
+        "name":"系统管理员"
+      },
+      {
+        "code":"PZGL",
+        "id":"2",
+        "locked":false,
+        "name":"配置管理员"
+      },
+      {
+        "code":"CKGL",
+        "id":"3",
+        "locked":false,
+        "name":"仓库管理员"
+      }
+    ],
+    "pages":1,
+    "size":10,
+    "total":3
+  },
+  "status":200,
+  "statusText":"操作成功",
+  "success":true
+};
 
-const treeData = [{
-  title: '基础管理系统',
-  id: '0-0',
-  isLeaf: false,
-  children: [{
-    title: '系统管理',
-    id: '0-0-0',
-    children: [
-      {title: '字典管理', id: '0-0-0-0', isLeaf: true, checked: true},
-      {title: '菜单管理', id: '0-0-0-1', isLeaf: true, checked: true},
-      {title: '权限管理', id: '0-0-0-2', isLeaf: true, checked: true},
-    ],
-  }, {
-    title: '系统监控',
-    id: '0-0-1',
-    isLeaf: false,
-    children: [
-      {title: 'Druid监控', id: '0-0-1-0', isLeaf: true, checked: true},
-      {title: 'Hystrix监控', id: '0-0-1-1', isLeaf: true},
-      {title: 'Swagger', id: '0-0-1-2', isLeaf: true, checked: true},
-    ],
-  }, {
-    title: '商品管理',
-    id: '0-0-2',
-    isLeaf: true,
-  }],
-}, {
-  title: '交易管理系统',
-  id: '0-1',
-  isLeaf: false,
-  children: [
-    {title: '订单管理', id: '0-1-0-0', isLeaf: true},
-    {title: '物流管理', id: '0-1-0-1', isLeaf: true},
-    {title: '对账管理', id: '0-1-0-2', isLeaf: true},
-  ],
-}, {
-  title: '库存管理系统',
-  checked: true,
-  isLeaf: false,
-  id: '0-2',
-}];
+const module = {
+  "data":{
+    "checked":["6","10","5","8","7","11"],
+    "modules":[
+      {
+        "children":[
+          {
+            "icon":"flag",
+            "id":"6",
+            "isleaf":true,
+            "name":"组织管理",
+            "parentId":"5",
+            "parentName":"系统管理",
+            "path":"organization",
+            "pathId":"5",
+            "status":"0001"
+          },
+          {
+            "icon":"bars",
+            "id":"7",
+            "isleaf":true,
+            "name":"模块管理",
+            "parentId":"5",
+            "parentName":"系统管理",
+            "path":"module",
+            "pathId":"5",
+            "status":"0001"
+          },
+          {
+            "icon":"usergroup-add",
+            "id":"8",
+            "isleaf":true,
+            "name":"用户管理",
+            "parentId":"5",
+            "parentName":"系统管理",
+            "path":"account",
+            "pathId":"5",
+            "status":"0001"
+          },
+          {
+            "icon":"form",
+            "id":"9",
+            "isleaf":true,
+            "name":"权限管理",
+            "parentId":"5",
+            "parentName":"系统管理",
+            "path":"role",
+            "pathId":"5",
+            "status":"0001"
+          },
+          {
+            "icon":"profile",
+            "id":"10",
+            "isleaf":true,
+            "name":"字典管理",
+            "parentId":"5",
+            "parentName":"系统管理",
+            "path":"dictionary",
+            "pathId":"5",
+            "status":"0001"
+          }
+        ],
+        "icon":"setting",
+        "id":"5",
+        "isleaf":false,
+        "name":"系统管理",
+        "orders":2,
+        "path":"sys",
+        "pathId":"0",
+        "status":"0001"
+      },
+    ]
+  },
+  "status":200,
+  "statusText":"操作成功",
+  "success":true
+};
 
 const configData = [{
   id: 1,
@@ -90,56 +135,99 @@ const configData = [{
   order: 3,
 },];
 
-const userData = [{
-  id: '0',
-  username: '李忱',
-  loginName: 'lichen',
-  sex: 'male',
-  idCard: '3709************38',
-  phone: '186****9871',
-  department: '统合部',
-  lock: false,
-}, {
-  id: '1',
-  username: '刘欢',
-  loginName: 'liuhuan',
-  sex: 'male',
-  idCard: '3709************38',
-  phone: '186****9871',
-  department: '财务部',
-  lock: false,
-}, {
-  id: '2',
-  username: '曹瑞',
-  loginName: 'caorui',
-  sex: 'female',
-  idCard: '3709************38',
-  phone: '186****9871',
-  department: '销售部',
-  lock: false,
-}, {
-  id: '3',
-  username: '孙策',
-  loginName: 'sunce',
-  sex: 'male',
-  idCard: '3709************38',
-  phone: '186****9871',
-  department: '统合部',
-  lock: true,
-}, {
-  id: '4',
-  username: '钟会',
-  loginName: 'zhonghui',
-  sex: 'male',
-  idCard: '3709************38',
-  phone: '186****9871',
-  department: '统合部',
-  lock: false,
-}];
+const users = {
+  "data":{
+    "checked":[
+      "010c5032b86a4b47ae2b5c1753eb39f2",
+      "4e51e4cb519f4df29c39bae540607362",
+      "4",
+      "469229421e1349b3a786ddefe7858769"
+    ],
+    "users":{
+      "current":1,
+      "data":[
+        {
+          "account":"G",
+          "id":"010c5032b86a4b47ae2b5c1753eb39f2",
+          "locked":false,
+          "name":"G",
+          "nickName":"G"
+        },
+        {
+          "account":"A",
+          "id":"2e3df89a0ecb4b5ca5883cdab278d364",
+          "locked":false,
+          "name":"A"
+        },
+        {
+          "account":"C",
+          "id":"3aa43b60b3ed4a7aa6c66657ea6b0c77",
+          "locked":false,
+          "name":"C"
+        },
+        {
+          "account":"c",
+          "id":"4",
+          "locked":false,
+          "name":"c"
+        },
+        {
+          "account":"H",
+          "id":"469229421e1349b3a786ddefe7858769",
+          "locked":false,
+          "name":"HCS",
+          "nickName":"H"
+        },
+        {
+          "account":"N",
+          "deptId":"1",
+          "id":"6098fa4beda44c6baea5048709ccb64c",
+          "locked":false,
+          "name":"N"
+        },
+        {
+          "account":"F",
+          "id":"7cf7fa15bd504fc4a7e3b3d2d05042d1",
+          "locked":false,
+          "name":"F",
+          "nickName":"F"
+        },
+        {
+          "account":"admin",
+          "code":"Testr",
+          "email":"test@test.com",
+          "id":"91c83ffb45564edfa7e7eb5edf1cdc5a",
+          "locked":false,
+          "name":"Frank Wu LQHB",
+          "nickName":"24",
+          "tel":"2"
+        },
+        {
+          "code":"T",
+          "id":"a5527916d2f24d6d87fc00fd1ca54414",
+          "locked":false,
+          "name":"协议商品清单"
+        },
+        {
+          "account":"B",
+          "id":"ce62a7bccd004b1aaf6b3c7c81912375",
+          "locked":false,
+          "name":"B"
+        }
+      ],
+      "pages":2,
+      "size":10,
+      "total":12
+    }
+  },
+  "status":200,
+  "statusText":"操作成功",
+  "success":true
+};
 
 // 获取权限列表数据
 export function listRole(req, res, u) {
-  const dataSource = [...data];
+  const dataSource = data;
   if (res && res.json) {
     res.json(dataSource);
   } else {
@@ -148,22 +236,23 @@ export function listRole(req, res, u) {
 }
 
 // 根据权限组获取绑定的模块数据
-export function listModulebyRoleId(req, res, u) {
-  const dataSource = [...treeData];
-  const checked = ['0-0-0-0', '0-0-0-1', '0-0-0-2', '0-0-1-0', '0-0-1-1', '0-0-1-2', '0-2'];
-
-  const result = {
-    data: dataSource,
-    checked,
-  };
-
+export function listModule(req, res, u) {
+  const dataSource = module;
   if (res && res.json) {
-    res.json(result);
+    res.json(dataSource);
   } else {
-    return result;
+    return dataSource;
   }
 }
-
+// 获取用户列表
+export function listUser(req, res, u) {
+  const dataSource = users;
+  if (res && res.json) {
+    res.json(dataSource);
+  } else {
+    return dataSource;
+  }
+}
 // 获取字典项数据
 export function getDictItemByRoleId(req, res, u) {
   if (res && res.json) {
@@ -173,25 +262,9 @@ export function getDictItemByRoleId(req, res, u) {
   }
 }
 
-// 获取用户列表
-export function listUserByRoleId(req, res, u) {
-  const checked = ['0', '1', '4'];
-  const result = {
-    data: userData,
-    checked,
-  };
-
-  if (res && res.json) {
-    res.json(result);
-  } else {
-    return result;
-  }
-}
-
 export default {
   listRole,
-  listModulebyRoleId,
-  listUserByRoleId,
-  getDictItemByRoleId
+  listModule,
+  listUser
 };
 

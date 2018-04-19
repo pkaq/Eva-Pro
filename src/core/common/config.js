@@ -49,61 +49,6 @@ export default function getConfig(app) {
         import('../layouts/BasicLayout')
       ),
     },
-    '/dashboard/analysis': {
-      component: dynamicWrapper(app, ['models/chart'], () =>
-        import('../../routes/Dashboard/Analysis')
-      ),
-    },
-    '/dashboard/monitor': {
-      component: dynamicWrapper(app, ['models/monitor'], () =>
-        import('../../routes/Dashboard/Monitor')
-      ),
-    },
-    '/dashboard/workplace': {
-      component: dynamicWrapper(app, ['models/project', 'models/activities', 'models/chart'], () =>
-        import('../../routes/Dashboard/Workplace')
-      ),
-      // hideInBreadcrumb: true,
-      name: '工作台',
-    },
-    '/monitor/druid': {
-      name: 'Druid监控',
-      component: dynamicWrapper(app, [], () => import('../../app/monitor/druid/Druid')),
-    },
-    '/monitor/hystrix': {
-      name: 'Hystrix',
-      component: dynamicWrapper(app, [], () => import('../../app/monitor/hystrix/Hystrix')),
-    },
-    '/monitor/swagger': {
-      name: 'Swagger',
-      component: dynamicWrapper(app, [], () => import('../../app/monitor/swagger/Swagger')),
-    },
-    '/monitor/loginlog': {
-      name: '登录日志',
-      component: dynamicWrapper(app, [], () => import('../../app/monitor/druid/Druid')),
-    },
-    '/monitor/operatelog': {
-      name: '操作日志',
-      component: dynamicWrapper(app, [], () => import('../../app/monitor/druid/Druid')),
-    },
-    '/goods/goodsinfo': {
-      name: '商品信息',
-      component: dynamicWrapper(app, ['app/goods/model/Goods'], () =>
-        import('../../app/goods/route/Goods')
-      ),
-    },
-    '/retail/sale': {
-      name: '零售开单',
-      component: dynamicWrapper(app, ['app/retail/model/Sale'], () =>
-        import('../../app/retail/route/Sale')
-      ),
-    },
-    '/instock/instock': {
-      name: '采购入库单',
-      component: dynamicWrapper(app, ['app/instock/model/Instock'], () =>
-        import('../../app/instock/route/Instock')
-      ),
-    },
     '/sys/organization': {
       name: '组织管理',
       component: dynamicWrapper(app, ['app/sys/organization/model/Organization'], () =>
@@ -133,49 +78,6 @@ export default function getConfig(app) {
       component: dynamicWrapper(app, ['app/sys/dictionary/model/Dict'], () =>
         import('../../app/sys/dictionary/route/Index')
       ),
-    },
-    '/form/basic-form': {
-      component: dynamicWrapper(app, ['models/form'], () => import('../../routes/Forms/BasicForm')),
-    },
-    '/form/step-form/info': {
-      name: '分步表单（填写转账信息）',
-      component: dynamicWrapper(app, ['form'], () => import('../../routes/Forms/StepForm/Step1')),
-    },
-    '/form/step-form/confirm': {
-      name: '分步表单（确认转账信息）',
-      component: dynamicWrapper(app, ['form'], () => import('../../routes/Forms/StepForm/Step2')),
-    },
-    '/form/step-form/result': {
-      name: '分步表单（完成）',
-      component: dynamicWrapper(app, ['form'], () => import('../../routes/Forms/StepForm/Step3')),
-    },
-    '/form/advanced-form': {
-      component: dynamicWrapper(app, ['models/form'], () =>
-        import('../../routes/Forms/AdvancedForm')
-      ),
-    },
-    '/list/table-list': {
-      component: dynamicWrapper(app, ['models/rule'], () => import('../../routes/List/TableList')),
-    },
-    '/list/basic-list': {
-      component: dynamicWrapper(app, ['models/list'], () => import('../../routes/List/BasicList')),
-    },
-    '/list/card-list': {
-      component: dynamicWrapper(app, ['models/list'], () => import('../../routes/List/CardList')),
-    },
-    '/list/search': {
-      component: dynamicWrapper(app, ['models/list'], () => import('../../routes/List/List')),
-    },
-    '/list/search/projects': {
-      component: dynamicWrapper(app, ['models/list'], () => import('../../routes/List/Projects')),
-    },
-    '/list/search/applications': {
-      component: dynamicWrapper(app, ['models/list'], () =>
-        import('../../routes/List/Applications')
-      ),
-    },
-    '/list/search/articles': {
-      component: dynamicWrapper(app, ['models/list'], () => import('../../routes/List/Articles')),
     },
     '/profile/basic': {
       component: dynamicWrapper(app, ['models/profile'], () =>

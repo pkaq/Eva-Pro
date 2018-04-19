@@ -79,7 +79,7 @@ export default function request(url, options) {
       Promise.resolve(e.response).then(r => {
         notification.error({
           message: `请求错误 : ${url}`,
-          description: `${r.statusText}`,
+          description: r?`${r.statusText}`: '服务器错误',
         });
       });
 

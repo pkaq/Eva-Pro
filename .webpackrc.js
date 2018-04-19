@@ -12,31 +12,11 @@ export default {
     },
   },
   proxy: {
-    "/organization": {
-      "target": "http://localhost/",
-      "changeOrigin": true
-    },
     "/dict": {
       "target": "http://localhost/",
       "changeOrigin": true
     },
-    "/sale": {
-      "target": "http://localhost/",
-      "changeOrigin": true
-    },
-    "/module": {
-      "target": "http://localhost/",
-      "changeOrigin": true
-    },
-    "/instock": {
-      "target": "http://localhost/",
-      "changeOrigin": true
-    },
     "/account": {
-      "target": "http://localhost/",
-      "changeOrigin": true
-    },
-    "/role": {
       "target": "http://localhost/",
       "changeOrigin": true
     },

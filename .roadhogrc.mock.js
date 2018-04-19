@@ -1,14 +1,13 @@
 import mockjs from 'mockjs';
 import {getRule, postRule} from './mock/rule';
-import {getGoods, postGoods} from './mock/goods';
 import {getActivities, getNotice, getFakeList} from './mock/api';
-import {getFakeChartData} from './mock/chart';
 import {getProfileBasicData} from './mock/profile';
 import {getProfileAdvancedData} from './mock/profile';
 import {getNotices} from './mock/notices';
 import {delay} from 'roadhog-api-doc';
-import {getModule, getUserMenu} from './mock/module';
-import {listRole, listModulebyRoleId, getDictItemByRoleId, listUserByRoleId} from './mock/role';
+import {getModule} from './mock/module';
+import {listAccount} from './mock/user';
+import {listRole, listModule, getDictItemByRoleId, listUser} from './mock/role';
 import {saveOrg, getOrg, listOrg, deleteOrg, changeStatus} from './mock/organization';
 import {listDict, getDict, deleteDictItem, addDictItem} from './mock/dict';
 
@@ -62,11 +61,12 @@ const proxy = {
     },
     $body: postRule,
   },
-  'GET /module/getModule': getModule,
-  'GET /module/getUserMenu': getUserMenu,
-  'GET /role/listRole': listRole,
-  'GET /role/listModulebyRoleId': listModulebyRoleId,
-  'GET /role/listUserByRoleId': listUserByRoleId,
+  'GET /account/list': listAccount,
+  'GET /module/list': getModule,
+  'GET /module/listModuleByAttr': getModule,
+  'GET /role/list': listRole,
+  'GET /role/listUser': listUser,
+  'GET /role/listModule': listModule,
   'GET /role/getDictItemByRoleId': getDictItemByRoleId,
   'GET /dict/getDict': getDict,
   'GET /dict/listDict': listDict,
@@ -75,26 +75,13 @@ const proxy = {
   'POST /organization/edit': saveOrg,
   'GET /organization/get': getOrg,
   'GET /organization/list': listOrg,
-  'DELETE /organization/del': deleteOrg,
+  'GET /organization/listOrgByAttr': listOrg,
+  'POST /organization/del': deleteOrg,
   'POST /organization/changeStatus': changeStatus,
-  'GET /goods/list': getGoods,
-  'POST /goods/list': {
-    $params: {
-      pageSize: {
-        desc: '分页',
-        exp: 2,
-      },
-    },
-    $body: postGoods,
-  },
-  'POST /api/forms': (req, res) => {
-    res.send({message: 'Ok'});
-  },
   'GET /api/tags': mockjs.mock({
     'list|100': [{name: '@city', 'value|1-100': 150, 'type|0-2': 1}]
   }),
   'GET /api/fake_list': getFakeList,
-  'GET /api/fake_chart_data': getFakeChartData,
   'GET /api/profile/basic': getProfileBasicData,
   'GET /api/profile/advanced': getProfileAdvancedData,
   'POST /api/login/account': (req, res) => {
