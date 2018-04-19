@@ -131,7 +131,7 @@ export default class SiderMenu extends PureComponent {
                 item.name
               )
             }
-            key={item.id}
+            key={item.path}
           >
             {childrenItems}
           </SubMenu>
@@ -139,7 +139,7 @@ export default class SiderMenu extends PureComponent {
       }
       return null;
     } else {
-      return <Menu.Item key={item.id}>{this.getMenuItemPath(item)}</Menu.Item>;
+      return <Menu.Item key={item.path}>{this.getMenuItemPath(item)}</Menu.Item>;
     }
   };
   /**
@@ -185,7 +185,6 @@ export default class SiderMenu extends PureComponent {
     return this.menus.some(item => key && (item.key === key || item.path === key));
   };
   handleOpenChange = openKeys => {
-    console.info(openKeys);
     const lastOpenKey = openKeys[openKeys.length - 1];
     const moreThanOne = openKeys.filter(openKey => this.isMainMenu(openKey)).length > 1;
     this.setState({
