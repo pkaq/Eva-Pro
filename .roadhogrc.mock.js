@@ -69,7 +69,7 @@ const proxy = {
   'GET /role/listModule': listModule,
   'GET /role/getDictItemByRoleId': getDictItemByRoleId,
   'GET /dict/getDict': getDict,
-  'GET /dict/listDict': listDict,
+  'GET /dict/list': listDict,
   'POST /dict/deleteDictItem': deleteDictItem,
   'POST /dict/addDictItem': addDictItem,
   'POST /organization/edit': saveOrg,

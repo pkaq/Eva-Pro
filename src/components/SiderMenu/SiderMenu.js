@@ -5,7 +5,7 @@ import pathToRegexp from 'path-to-regexp';
 import { Link } from 'dva/router';
 import styles from './index.less';
 import { urlToList } from '../_utils/pathTools';
-
+import * as AppInfo from 'core/common/AppInfo';
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -185,6 +185,7 @@ export default class SiderMenu extends PureComponent {
     return this.menus.some(item => key && (item.key === key || item.path === key));
   };
   handleOpenChange = openKeys => {
+    console.info(openKeys);
     const lastOpenKey = openKeys[openKeys.length - 1];
     const moreThanOne = openKeys.filter(openKey => this.isMainMenu(openKey)).length > 1;
     this.setState({
@@ -222,7 +223,7 @@ export default class SiderMenu extends PureComponent {
         <div className={theme.logo} key="logo">
           <Link to="/">
             <img src={logo} alt="logo" />
-            <h1 onClick={() => this.handleClick()}>PKAQ Design</h1>
+            <h1 onClick={() => this.handleClick()}>{AppInfo.title}</h1>
           </Link>
         </div>
         <Menu

@@ -12,14 +12,14 @@ export default {
     },
   },
   proxy: {
-    "/dict": {
-      "target": "http://localhost/",
-      "changeOrigin": true
-    },
-    "/account": {
-      "target": "http://localhost/",
-      "changeOrigin": true
-    },
+    // "/dict": {
+    //   "target": "http://localhost/",
+    //   "changeOrigin": true
+    // },
+    // "/account": {
+    //   "target": "http://localhost/",
+    //   "changeOrigin": true
+    // },
   },
   alias: {
     core: path.resolve(__dirname, 'src/core'),
