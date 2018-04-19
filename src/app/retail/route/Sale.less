@@ -1,0 +1,72 @@
+@import '../../../core/style/common';
+.input_20 {
+  width: 50%;
+}
+.pageWrapper {
+  height: inherit;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.listHeight {
+  min-height: ~'calc(100vh - 300px)';
+  position: relative;
+}
+// 网格
+.left_col {
+  .fullHeightCol;
+  background: #f0f2f4;
+  padding: 5px;
+}
+.gridWrapper {
+  padding: 0;
+  :global {
+    .ant-card-body {
+      padding: 0;
+    }
+  }
+}
+.gridStyle {
+  width: 25%;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    background-color: #1da9ff;
+  }
+}
+.footer_row {
+  height: 60px;
+}
+.total {
+  color: #fefefe;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: bold;
+  font-size: 18px;
+}
+.footbar_left {
+  .flex_centerall;
+  padding: 2px 5px 2px 5px;
+  background: #3a3a3a;
+  input {
+    height: 90%;
+  }
+}
+.footbar_right {
+  .flex_centerall;
+  padding: 5px;
+  background: #098fff;
+}
+.checkOutBtn {
+  height: 100%;
+  width: 100%;
+  margin: 3px;
+}
+.removeBtn {
+  .redFont;
+  cursor: pointer;
+}
