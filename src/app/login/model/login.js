@@ -18,7 +18,7 @@ export default {
         payload: response,
       });
       // Login successfully
-      if (response.status === 'ok') {
+      if (response.success === 'ok') {
         reloadAuthorized();
         yield put(routerRedux.push('/'));
       }
