@@ -1,6 +1,6 @@
-import { queryNotices } from '../services/api';
-import { getUserMenu } from '../core/service/global';
-import { moudleFormatter } from '../core/utils/DataHelper';
+import { queryNotices } from '../service/global';
+import { getUserMenu } from 'core/service/global';
+import { moudleFormatter } from 'core/utils/DataHelper';
 
 export default {
   namespace: 'global',

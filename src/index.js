@@ -22,8 +22,8 @@ const app = dva({
 app.use(createLoading());
 
 // 3. Register global model
-app.model(require('./models/global').default);
-// Ö÷Ìâmodel
+app.model(require('./app/global/model/global').default);
+// ä¸»é¢˜model
 app.model(require('./core/theme/model/Theme').default);
 
 // 4. Router

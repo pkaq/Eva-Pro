@@ -14,7 +14,7 @@ const dynamicWrapper = (app, models, component) => {
     models.forEach(model => {
       if (modelNotExisted(app, model)) {
         // eslint-disable-next-line
-        app.model(require(`../../${model}`).default);
+        app.model(require(`../../app/${model}`).default);
       }
     });
     return props => {
@@ -44,68 +44,52 @@ const dynamicWrapper = (app, models, component) => {
 export default function getConfig(app) {
   return {
     '/': {
-      component: dynamicWrapper(app, ['models/user', 'app/login/model/login'], () =>
+      component: dynamicWrapper(app, ['login/model/user', 'login/model/login'], () =>
         import('../layouts/BasicLayout')
       ),
     },
     '/sys/organization': {
       name: '组织管理',
-      component: dynamicWrapper(app, ['app/sys/organization/model/Organization'], () =>
+      component: dynamicWrapper(app, ['sys/organization/model/Organization'], () =>
         import('../../app/sys/organization/route/Index')
       ),
     },
     '/sys/module': {
       name: '模块管理',
-      component: dynamicWrapper(app, ['app/sys/module/model/Module'], () =>
+      component: dynamicWrapper(app, ['sys/module/model/Module'], () =>
         import('../../app/sys/module/route/Index')
       ),
     },
     '/sys/account': {
       name: '用户管理',
-      component: dynamicWrapper(app, ['app/sys/account/model/Account'], () =>
+      component: dynamicWrapper(app, ['sys/account/model/Account'], () =>
         import('../../app/sys/account/route/Index')
       ),
     },
     '/sys/role': {
       name: '角色授权管理',
-      component: dynamicWrapper(app, ['app/sys/role/model/Role'], () =>
+      component: dynamicWrapper(app, ['sys/role/model/Role'], () =>
         import('../../app/sys/role/route/Index')
       ),
     },
     '/sys/dictionary': {
       name: '字典管理',
-      component: dynamicWrapper(app, ['app/sys/dictionary/model/Dict'], () =>
+      component: dynamicWrapper(app, ['sys/dictionary/model/Dict'], () =>
         import('../../app/sys/dictionary/route/Index')
       ),
     },
-    '/profile/basic': {
-      component: dynamicWrapper(app, ['models/profile'], () =>
-        import('../../routes/Profile/BasicProfile')
-      ),
-    },
-    '/profile/advanced': {
-      component: dynamicWrapper(app, ['models/profile'], () =>
-        import('../../routes/Profile/AdvancedProfile')
-      ),
-    },
-    '/result/success': {
-      component: dynamicWrapper(app, [], () => import('../../routes/Result/Success')),
-    },
-    '/result/fail': {
-      component: dynamicWrapper(app, [], () => import('../../routes/Result/Error')),
-    },
     '/exception/403': {
-      component: dynamicWrapper(app, [], () => import('../../routes/Exception/403')),
+      component: dynamicWrapper(app, [], () => import('../../app/error/route/403')),
     },
     '/exception/404': {
-      component: dynamicWrapper(app, [], () => import('../../routes/Exception/404')),
+      component: dynamicWrapper(app, [], () => import('../../app/error/route/404')),
     },
     '/exception/500': {
-      component: dynamicWrapper(app, [], () => import('../../routes/Exception/500')),
+      component: dynamicWrapper(app, [], () => import('../../app/error/route/500')),
     },
     '/exception/trigger': {
-      component: dynamicWrapper(app, ['models/error'], () =>
-        import('../../routes/Exception/triggerException')
+      component: dynamicWrapper(app, ['error/model/error'], () =>
+        import('../../app/error/route/triggerException')
       ),
     },
   };
@@ -114,7 +98,7 @@ export default function getConfig(app) {
 export function getUserNav(app) {
   return {
     '/user/login': {
-      component: dynamicWrapper(app, ['app/login/model/login'], () => import('../../app/login/route/Login')),
+      component: dynamicWrapper(app, ['login/model/login'], () => import('../../app/login/route/Login')),
     },
   };
 }

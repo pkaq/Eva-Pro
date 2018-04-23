@@ -32,35 +32,6 @@ const proxy = {
       notifyCount: 12,
     },
   },
-  // GET POST 可省略
-  'GET /api/users': [{
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-  }, {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-  }, {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-  }],
-  'GET /api/project/notice': getNotice,
-  'GET /api/activities': getActivities,
-  'GET /api/rule': getRule,
-  'POST /api/rule': {
-    $params: {
-      pageSize: {
-        desc: '分页',
-        exp: 2,
-      },
-    },
-    $body: postRule,
-  },
   'GET /account/list': listAccount,
   'GET /module/list': getModule,
   'GET /module/listModuleByAttr': getModule,
@@ -81,9 +52,6 @@ const proxy = {
   'GET /api/tags': mockjs.mock({
     'list|100': [{name: '@city', 'value|1-100': 150, 'type|0-2': 1}]
   }),
-  'GET /api/fake_list': getFakeList,
-  'GET /api/profile/basic': getProfileBasicData,
-  'GET /api/profile/advanced': getProfileAdvancedData,
   'POST /auth/login': (req, res) => {
     const {password, userName, type} = req.body;
     if (password === 'admin' && userName === 'admin') {
@@ -109,9 +77,6 @@ const proxy = {
       type,
       currentAuthority: 'guest'
     });
-  },
-  'POST /api/register': (req, res) => {
-    res.send({status: 'ok', currentAuthority: 'user'});
   },
   'GET /api/notices': getNotices,
   'GET /api/500': (req, res) => {

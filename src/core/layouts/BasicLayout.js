@@ -11,7 +11,7 @@ import NProgress from 'nprogress';
 import GlobalHeader from 'components/GlobalHeader';
 import GlobalFooter from 'components/GlobalFooter';
 import SiderMenu from 'components/SiderMenu';
-import NotFound from '../../routes/Exception/404';
+import NotFound from '../../app/error/route/404';
 import { getRoutes } from '../utils/utils';
 import Authorized from '../utils/Authorized';
 import logo from '../../assets/logo.svg';
