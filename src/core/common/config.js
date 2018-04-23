@@ -1,6 +1,5 @@
 import dynamic from 'dva/dynamic';
 import { createElement } from 'react';
-
 // 判断model是否已存在
 const modelNotExisted = (app, model) =>
   // eslint-disable-next-line
@@ -45,7 +44,7 @@ const dynamicWrapper = (app, models, component) => {
 export default function getConfig(app) {
   return {
     '/': {
-      component: dynamicWrapper(app, ['models/user', 'models/login'], () =>
+      component: dynamicWrapper(app, ['models/user', 'app/login/model/login'], () =>
         import('../layouts/BasicLayout')
       ),
     },
@@ -115,7 +114,7 @@ export default function getConfig(app) {
 export function getUserNav(app) {
   return {
     '/user/login': {
-      component: dynamicWrapper(app, ['models/login'], () => import('../../app/login/route/Login')),
+      component: dynamicWrapper(app, ['app/login/model/login'], () => import('../../app/login/route/Login')),
     },
   };
 }

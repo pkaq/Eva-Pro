@@ -84,11 +84,13 @@ const proxy = {
   'GET /api/fake_list': getFakeList,
   'GET /api/profile/basic': getProfileBasicData,
   'GET /api/profile/advanced': getProfileAdvancedData,
-  'POST /api/login/account': (req, res) => {
+  'POST /auth/login': (req, res) => {
     const {password, userName, type} = req.body;
-    if (password === '888888' && userName === 'admin') {
+    if (password === 'admin' && userName === 'admin') {
       res.send({
-        status: 'ok',
+        "status":200,
+        "statusText":"操作成功",
+        "success":true,
         type,
         currentAuthority: 'admin'
       });
