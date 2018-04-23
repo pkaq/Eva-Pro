@@ -115,13 +115,7 @@ export default function getConfig(app) {
 export function getUserNav(app) {
   return {
     '/user/login': {
-      component: dynamicWrapper(app, ['models/login'], () => import('../../routes/User/Login')),
-    },
-    '/user/register': {
-      component: dynamicWrapper(app, [], () => import('../../routes/User/Register')),
-    },
-    '/user/register-result': {
-      component: dynamicWrapper(app, [], () => import('../../routes/User/RegisterResult')),
+      component: dynamicWrapper(app, ['models/login'], () => import('../../app/login/route/Login')),
     },
   };
 }

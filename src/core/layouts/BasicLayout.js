@@ -269,7 +269,7 @@ export default class BasicLayout extends React.Component {
               <Route render={NotFound} />
             </Switch>
             {/* pkaq pin icon*/}
-            <BackTop visibilityHeight={-1}>
+            <BackTop visibilityHeight={10}>
               <Popover content="Hi jack" trigger="hover" onClick={() => this.changeTheme()}>
                 <img src={pkaq} alt="pkaq" style={{ height: 60, width: 60 }} />
               </Popover>
