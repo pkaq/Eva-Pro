@@ -1,5 +1,6 @@
 import fetch from 'dva/fetch';
-import { notification, message } from 'antd';
+import { notification } from 'antd';
+import * as cookie from "cookie";
 import { routerRedux } from 'dva/router';
 import store from '../../index';
 
@@ -41,6 +42,9 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options) {
+  const token = cookie.token;
+  console.info(token);
+
   const defaultOptions = {
     credentials: 'include',
   };

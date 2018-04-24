@@ -67,27 +67,6 @@ const data = {
       "pathId":"0",
       "status":"0001"
     },
-    {
-      "children":[
-        {
-          "id":"22",
-          "isleaf":true,
-          "name":"登录",
-          "parentId":"21",
-          "parentName":"账户",
-          "path":"login",
-          "pathId":"21",
-          "status":"0000"
-        }
-      ],
-      "icon":"user",
-      "id":"21",
-      "isleaf":false,
-      "name":"账户",
-      "orders":8,
-      "path":"user",
-      "status":"0000"
-    }
   ],
   "status":200,
   "statusText":"操作成功",

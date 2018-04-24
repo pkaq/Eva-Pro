@@ -2,7 +2,7 @@ import { routerRedux } from 'dva/router';
 import { login } from '../service/login';
 import { setAuthority } from 'core/utils/authority';
 import { reloadAuthorized } from 'core/utils/Authorized';
-
+import * as cookie from "cookie";
 export default {
   namespace: 'login',
 
@@ -18,7 +18,14 @@ export default {
         payload: response,
       });
       // Login successfully
-      if (response.success === 'ok') {
+      if (response.success) {
+        // 保存token一天
+        cookie.serialize('token', String(response.data.token), {
+          httpOnly: true,
+          // 1 day
+          maxAge: 60 * 60 * 24
+        });
+
         reloadAuthorized();
         yield put(routerRedux.push('/'));
       }

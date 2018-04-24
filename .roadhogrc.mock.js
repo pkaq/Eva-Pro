@@ -59,6 +59,9 @@ const proxy = {
         "status":200,
         "statusText":"操作成功",
         "success":true,
+        data: {
+          token: 'x.y.z'
+        },
         type,
         currentAuthority: 'admin'
       });
