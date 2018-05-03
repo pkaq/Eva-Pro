@@ -3,6 +3,7 @@ module.exports = {
   copyRight: '2018 PKAQ',
   title: 'Eva',
   description: 'Power by PKAQ',
+  request_prefix: '/api',
   icons: [
     'question-circle-o',
     'plus-square',

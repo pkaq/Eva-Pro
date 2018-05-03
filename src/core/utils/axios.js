@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { notification } from 'antd';
-import * as cookie from 'cookie';
+import cookie from 'react-cookies';
 import { routerRedux } from 'dva/router';
 import store from '../../index';
+import * as AppInfo from 'core/common/AppInfo';
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -42,8 +43,7 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options) {
-  const token = cookie.token;
-  console.info('token is : ' + token);
+  const token = cookie.load("token");
 
   const defaultOptions = {
     credentials: 'include',
@@ -65,7 +65,10 @@ export default function request(url, options) {
     }
   }
   const config = {
-    url: url,
+    headers: {
+      "Authorization": "Bearer"+token
+    },
+    url: AppInfo.request_prefix+url,
     ...newOptions,
   };
   return axios

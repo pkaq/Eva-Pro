@@ -1,4 +1,4 @@
-import request from '../../../core/utils/request';
+import request from '../../../core/utils/axios';
 
 export async function query() {
   return request('/api/users');

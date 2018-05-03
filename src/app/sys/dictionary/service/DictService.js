@@ -1,4 +1,4 @@
-import request from 'core/utils/request';
+import request from 'core/utils/axios';
 import { getNoUndefinedString } from 'core/utils/utils';
 // 查询字典列表
 export async function listDict() {

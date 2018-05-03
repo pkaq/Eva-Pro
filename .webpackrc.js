@@ -11,14 +11,11 @@ export default {
     },
   },
   proxy: {
-    // "/dict": {
-    //   "target": "http://localhost/",
-    //   "changeOrigin": true
-    // },
-    // "/account": {
-    //   "target": "http://localhost/",
-    //   "changeOrigin": true
-    // },
+    "/api": {
+      "target": "http://localhost/",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "" }
+    },
   },
   alias: {
     core: path.resolve(__dirname, 'src/core'),

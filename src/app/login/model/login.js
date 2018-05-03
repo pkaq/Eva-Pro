@@ -2,7 +2,9 @@ import { routerRedux } from 'dva/router';
 import { login } from '../service/login';
 import { setAuthority } from 'core/utils/authority';
 import { reloadAuthorized } from 'core/utils/Authorized';
-import * as cookie from 'cookie';
+import { getUserMenu } from 'core/service/global';
+import { moudleFormatter } from 'core/utils/DataHelper';
+import cookie from 'react-cookies';
 export default {
   namespace: 'login',
 
@@ -13,20 +15,32 @@ export default {
   effects: {
     *login({ payload }, { call, put }) {
       const response = yield call(login, payload);
-      yield put({
-        type: 'changeLoginStatus',
-        payload: response,
-      });
       // Login successfully
       if (response.success) {
+
+        yield put({
+          type: 'changeLoginStatus',
+          payload: {
+            ...response,
+            currentAuthority: 'admin'
+          },
+        });
+
         // 保存token一天
-        cookie.serialize('token', String(response.data.token), {
-          httpOnly: true,
+        cookie.save('token', response.data, {
           // 1 day
           maxAge: 60 * 60 * 24,
         });
-
-        reloadAuthorized();
+        const rs = yield call(getUserMenu, payload);
+        if (rs && rs.data) {
+          // 查询数据
+          yield put({
+            type: 'global/updateState',
+            payload: {
+              menus: moudleFormatter(rs.data),
+            },
+          });
+        }
         yield put(routerRedux.push('/'));
       }
     },

@@ -1,5 +1,5 @@
 import { stringify } from 'qs';
-import request from 'core/utils/request';
+import request from 'core/utils/axios';
 import { getNoUndefinedString } from 'core/utils/utils';
 
 // 根据id获取角色信息

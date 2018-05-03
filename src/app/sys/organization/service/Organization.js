@@ -1,4 +1,4 @@
-import request from 'core/utils/request';
+import request from 'core/utils/axios';
 import { getNoUndefinedString } from 'core/utils/utils';
 import { stringify } from 'qs';
 //获取组织信息

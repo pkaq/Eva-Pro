@@ -92,6 +92,11 @@ export default function getConfig(app) {
         import('../../app/error/route/triggerException')
       ),
     },
+    '/user/login': {
+      component: dynamicWrapper(app, ['login/model/login'], () =>
+        import('../../app/login/route/Login')
+      ),
+    }
   };
 }
 
