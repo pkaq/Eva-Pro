@@ -2,7 +2,7 @@ import { routerRedux } from 'dva/router';
 import { login } from '../service/login';
 import { setAuthority } from 'core/utils/authority';
 import { reloadAuthorized } from 'core/utils/Authorized';
-import * as cookie from "cookie";
+import * as cookie from 'cookie';
 export default {
   namespace: 'login',
 
@@ -23,7 +23,7 @@ export default {
         cookie.serialize('token', String(response.data.token), {
           httpOnly: true,
           // 1 day
-          maxAge: 60 * 60 * 24
+          maxAge: 60 * 60 * 24,
         });
 
         reloadAuthorized();

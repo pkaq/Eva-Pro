@@ -1,4 +1,4 @@
-import {parse} from 'url';
+import { parse } from 'url';
 
 const titles = [
   'Alipay',
@@ -292,5 +292,4 @@ export const getActivities = [
 export default {
   getNotice,
   getActivities,
-  getFakeList,
 };
