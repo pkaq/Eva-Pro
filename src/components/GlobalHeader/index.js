@@ -75,7 +75,7 @@ export default class GlobalHeader extends PureComponent {
     const fullscreen = this.state.fullscreen;
 
     const {
-      currentUser,
+      currentUser = {},
       collapsed,
       fetchingNotices,
       isMobile,

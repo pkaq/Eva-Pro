@@ -6,6 +6,7 @@ import { connect } from 'dva';
 import { Route, Redirect, Switch, routerRedux } from 'dva/router';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
+import pathToRegexp from 'path-to-regexp';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
 import NProgress from 'nprogress';
 import GlobalHeader from 'components/GlobalHeader';
@@ -112,8 +113,15 @@ export default class BasicLayout extends React.Component {
     const { routerData, location } = this.props;
     const { pathname } = location;
     let title = AppInfo.title;
-    if (routerData[pathname] && routerData[pathname].name) {
-      title = `${routerData[pathname].name} - ${AppInfo.title}`;
+    let currRouterData = null;
+    // match params path
+    Object.keys(routerData).forEach(key => {
+      if (pathToRegexp(key).test(pathname)) {
+        currRouterData = routerData[key];
+      }
+    });
+    if (currRouterData && currRouterData.name) {
+      title = `${currRouterData.name} - Ant Design Pro`;
     }
     return title;
   }
