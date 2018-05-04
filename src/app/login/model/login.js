@@ -27,7 +27,7 @@ export default {
         });
 
         // 保存token一天
-        cookie.save('token', response.data, {
+        cookie.save('token', response.data.token, {
           // 1 day
           maxAge: 60 * 60 * 24,
         });
@@ -38,6 +38,7 @@ export default {
             type: 'global/updateState',
             payload: {
               menus: moudleFormatter(rs.data),
+              currentUser: response.data.user
             },
           });
         }
@@ -46,6 +47,8 @@ export default {
     },
     *logout(_, { put, select }) {
       try {
+        // 删除token
+        cookie.remove('token');
         // get location pathname
         const urlParams = new URL(window.location.href);
         const pathname = yield select(state => state.routing.location.pathname);
