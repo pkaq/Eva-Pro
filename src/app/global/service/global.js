@@ -1,4 +1,4 @@
-import request from 'core/utils/axios';
+import request from 'core/utils/request';
 
 // 查询通知
 export async function queryNotices() {

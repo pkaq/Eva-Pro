@@ -1,4 +1,4 @@
-import request from 'core/utils/axios';
+import request from 'core/utils/request';
 
 export async function login(params) {
   return request('/auth/login', {

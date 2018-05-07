@@ -1,5 +1,5 @@
 import { stringify } from 'qs';
-import request from 'core/utils/axios';
+import request from 'core/utils/request';
 import { getNoUndefinedString } from 'core/utils/utils';
 
 // 查询用户列表

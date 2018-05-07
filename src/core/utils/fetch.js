@@ -1,9 +1,8 @@
-import axios from 'axios';
+import fetch from 'dva/fetch';
 import { notification } from 'antd';
-import cookie from 'react-cookies';
+import * as cookie from 'cookie';
 import { routerRedux } from 'dva/router';
 import store from '../../index';
-import * as AppInfo from 'core/common/AppInfo';
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -29,9 +28,9 @@ function checkStatus(response) {
 
   const errortext = response.statusText ? response.statusText : codeMessage[response.status];
   const error = new Error(errortext);
-  error.url = response.config.url;
+  error.url = response.url;
   error.name = response.status;
-  error.response = response.data;
+  error.response = response.json();
   throw error;
 }
 
@@ -43,7 +42,8 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options) {
-  const token = cookie.load("token");
+  const token = cookie.token;
+  console.info(token);
 
   const defaultOptions = {
     credentials: 'include',
@@ -56,26 +56,24 @@ export default function request(url, options) {
         'Content-Type': 'application/json; charset=utf-8',
         ...newOptions.headers,
       };
-      newOptions.data = JSON.stringify(newOptions.body);
+      newOptions.body = JSON.stringify(newOptions.body);
     } else {
+      // newOptions.body is FormData
       newOptions.headers = {
         Accept: 'application/json',
         ...newOptions.headers,
       };
     }
   }
-  const config = {
-    headers: {
-      "Authorization": "Bearer"+token
-    },
-    url: AppInfo.request_prefix+url,
-    ...newOptions,
-  };
-  return axios
-    .request(config)
+  //TODO 需要处理返回200但success为false的情况
+  return fetch(url, newOptions)
     .then(checkStatus)
     .then(response => {
-      return response.data;
+      // 再判断一下服务器返回的操作状态
+      if (newOptions.method === 'DELETE' || response.status === 204) {
+        return response.text();
+      }
+      return response.json();
     })
     .catch(e => {
       const { dispatch } = store;
