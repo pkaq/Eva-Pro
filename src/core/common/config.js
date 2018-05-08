@@ -78,6 +78,14 @@ export default function getConfig(app) {
         import('../../app/sys/dictionary/route/Index')
       ),
     },
+    '/monitor/druid': {
+      name: 'Druid监控',
+      component: dynamicWrapper(app, [], () => import('../../app/monitor/Druid')),
+    },
+    '/monitor/swagger': {
+      name: 'Swagger',
+      component: dynamicWrapper(app, [], () => import('../../app/monitor/Swagger')),
+    },
     '/exception/403': {
       component: dynamicWrapper(app, [], () => import('../../app/error/route/403')),
     },

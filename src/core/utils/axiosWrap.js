@@ -5,7 +5,7 @@ import cookie from "react-cookies";
 let axiosWrap = axios.create({
   headers: {
     /* 一些公用的 header */
-    'Authorization': "Bearer" + cookie.load("token")
+    'Authorization': "Bearer" + (cookie.load("token")?cookie.load("token"):'')
   },
   // transformRequest:[function (data, header){
   //   /* 自定义请求参数解析方式（如果必要的话） */
