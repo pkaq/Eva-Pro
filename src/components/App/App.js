@@ -8,6 +8,12 @@ const App = WrappedComponent => {
     global: state.global,
   }))
   class App extends React.Component {
+    componentWillMount() {
+      console.info("app componentWillMount");
+      this.props.dispatch({
+        type: 'global/fetchMenus',
+      });
+    }
     render() {
       const menus = this.props.global.menus;
       const routerConfig = this.props.routerConfig;

@@ -102,9 +102,6 @@ export default class BasicLayout extends React.Component {
         isMobile: mobile,
       });
     });
-    this.props.dispatch({
-      type: 'user/fetchCurrent',
-    });
   }
   componentWillUnmount() {
     unenquireScreen(this.enquireHandler);

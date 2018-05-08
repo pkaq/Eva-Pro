@@ -19,12 +19,15 @@ export default {
     // 获取菜单
     *fetchMenus({ payload }, { put, call }) {
       const response = yield call(getUserMenu, payload);
+      console.info("fetch menus ");
+      console.info(response);
       if (response && response.data) {
         // 查询数据
         yield put({
           type: 'updateState',
           payload: {
             menus: moudleFormatter(response.data),
+            currentUser: response.data.user
           },
         });
       }

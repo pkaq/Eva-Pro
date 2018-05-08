@@ -32,17 +32,6 @@ export default {
           // 1 day
           maxAge: 60 * 60 * 24,
         });
-        const rs = yield call(getUserMenu, payload);
-        if (rs && rs.data) {
-          // 查询数据
-          yield put({
-            type: 'global/updateState',
-            payload: {
-              menus: moudleFormatter(rs.data),
-              currentUser: response.data.user
-            },
-          });
-        }
         yield put(routerRedux.push('/'));
       }
     },
