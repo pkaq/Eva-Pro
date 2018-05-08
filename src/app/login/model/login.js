@@ -15,7 +15,6 @@ export default {
   effects: {
     *login({ payload }, { call, put }) {
       const response = yield call(login, payload);
-      console.info(response);
       // Login successfully
       if (response.success) {
 
@@ -24,6 +23,12 @@ export default {
           payload: {
             ...response,
             currentAuthority: 'admin'
+          },
+        });
+        yield put({
+          type: 'global/updateState',
+          payload: {
+            currentUser: response.data.user
           },
         });
 

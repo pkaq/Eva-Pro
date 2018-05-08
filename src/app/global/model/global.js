@@ -26,8 +26,7 @@ export default {
         yield put({
           type: 'updateState',
           payload: {
-            menus: moudleFormatter(response.data),
-            currentUser: response.data.user
+            menus: moudleFormatter(response.data)
           },
         });
       }

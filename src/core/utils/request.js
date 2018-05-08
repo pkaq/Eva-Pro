@@ -65,7 +65,6 @@ export default function request(url, options) {
     url: AppInfo.request_prefix+url,
     ...newOptions,
   };
-  console.info(config);
 
   return ax
     .request(config)
