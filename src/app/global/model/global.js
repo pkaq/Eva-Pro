@@ -1,6 +1,7 @@
 import { queryNotices } from '../service/global';
 import { getUserMenu } from 'core/service/global';
 import { moudleFormatter } from 'core/utils/DataHelper';
+import {routerRedux} from "dva/router";
 
 export default {
   namespace: 'global',
@@ -29,6 +30,8 @@ export default {
             menus: moudleFormatter(response.data)
           },
         });
+      } else {
+        yield put(routerRedux.push('/user/login'));
       }
     },
     *fetchNotices(_, { call, put }) {

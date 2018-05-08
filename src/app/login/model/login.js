@@ -16,7 +16,7 @@ export default {
     *login({ payload }, { call, put }) {
       const response = yield call(login, payload);
       // Login successfully
-      if (response.success) {
+      if (response && response.success) {
 
         yield put({
           type: 'changeLoginStatus',
@@ -37,8 +37,8 @@ export default {
           // 1 day
           maxAge: 60 * 60 * 24,
         });
-        yield put(routerRedux.push('/'));
       }
+      yield put(routerRedux.push('/'));
     },
     *logout(_, { put, select }) {
       try {
