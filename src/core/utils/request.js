@@ -65,7 +65,11 @@ export default function request(url, options) {
     url: AppInfo.request_prefix+url,
     ...newOptions,
   };
-
+  if('/auth/login' === url ){
+    config.headers ={
+      'Authorization': 'login'
+    }
+  }
   return ax
     .request(config)
     .then(checkStatus)
