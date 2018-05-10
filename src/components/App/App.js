@@ -10,9 +10,10 @@ const App = WrappedComponent => {
   class App extends React.Component {
     componentWillMount() {
       console.info("app componentWillMount");
-      this.props.dispatch({
-        type: 'global/fetchMenus',
-      });
+      // state中是否存在？
+      // localstorage中是否存在？
+      // 根据用户信息远程加载
+
     }
     render() {
       const menus = this.props.global.menus;

@@ -19,18 +19,6 @@ export const model = {
         data: action.payload,
       };
     },
-    showLoading(state) {
-      return {
-        ...state,
-        loading: true,
-      };
-    },
-    hideLoading(state) {
-      return {
-        ...state,
-        loading: false,
-      };
-    },
   },
 };
 

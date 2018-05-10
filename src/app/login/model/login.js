@@ -22,23 +22,34 @@ export default {
           type: 'changeLoginStatus',
           payload: {
             ...response,
+            type: payload.type,
             currentAuthority: 'admin'
           },
         });
+        // 更新用户菜单状态
         yield put({
           type: 'global/updateState',
           payload: {
-            currentUser: response.data.user
+            menus: moudleFormatter(response.data.user.modules)
           },
         });
-
+        console.info("response token is : " + response.data.token);
         // 保存token一天
         cookie.save('token', response.data.token, {
           // 1 day
           maxAge: 60 * 60 * 24,
         });
+        reloadAuthorized();
+        yield put(routerRedux.push('/'));
+      } else {
+        yield put({
+          type: 'updateState',
+          payload: {
+            type: payload.type,
+            status: 'error',
+          },
+        });
       }
-      yield put(routerRedux.push('/'));
     },
     *logout(_, { put, select }) {
       try {
@@ -73,5 +84,11 @@ export default {
         type: payload.type,
       };
     },
-  },
+    updateState(state, { payload }) {
+      return {
+        ...state,
+        ...payload,
+      };
+    }
+  }
 };
