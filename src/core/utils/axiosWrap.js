@@ -1,12 +1,10 @@
 import axios from 'axios'
-import cookie from "react-cookies";
 
 /* 创建一个新的 AXIOS 对象，确保原有的对象不变 */
 let axiosWrap = axios.create({
   headers: {
     /* 一些公用的 header */
     'content-type': 'application/json',
-    'Authorization': "Bearer" + (cookie.load("token")?cookie.load("token"):'')
   },
   // transformRequest:[function (data, header){
   //   /* 自定义请求参数解析方式（如果必要的话） */

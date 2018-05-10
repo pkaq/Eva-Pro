@@ -3,7 +3,7 @@ import { routerRedux } from 'dva/router';
 import store from '../../index';
 import * as AppInfo from 'core/common/AppInfo';
 import ax from './axiosWrap';
-
+import cookie from "react-cookies";
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
@@ -68,6 +68,10 @@ export default function request(url, options) {
   if('/auth/login' === url ){
     config.headers ={
       'Authorization': 'login'
+    }
+  }else {
+    config.headers ={
+      'Authorization': "Bearer" + (cookie.load("eva_token")?cookie.load("eva_token"):'')
     }
   }
   return ax

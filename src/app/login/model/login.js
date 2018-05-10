@@ -35,10 +35,11 @@ export default {
         });
         console.info("response token is : " + response.data.token);
         // 保存token一天
-        cookie.save('token', response.data.token, {
+        cookie.save('eva_token', response.data.token, {
           // 1 day
           maxAge: 60 * 60 * 24,
         });
+        localStorage.setItem('eva_user', response.data.user);
         reloadAuthorized();
         yield put(routerRedux.push('/'));
       } else {
