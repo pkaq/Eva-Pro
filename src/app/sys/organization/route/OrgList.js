@@ -287,6 +287,7 @@ export default class OrgList extends Component {
           rowClassName={record => {
             return record.status === '0000' ? styles.disabled : styles.enabled;
           }}
+          pagination={false}
           rowKey={record => record.id}
           rowSelection={rowSelection}
         />
