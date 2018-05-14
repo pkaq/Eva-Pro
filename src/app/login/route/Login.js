@@ -55,7 +55,7 @@ export default class LoginPage extends Component {
             {login.status === 'error' &&
               login.type === 'account' &&
               !login.submitting &&
-              this.renderMessage('账户或密码错误')}
+              this.renderMessage(login.errorMsg? login.errorMsg: '账户或密码错误')}
             <UserName name="account" placeholder="请输入用户名" />
             <Password name="password" placeholder="请输入密码" />
           </Tab>
