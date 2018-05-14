@@ -33,6 +33,10 @@ export default {
           yield put({
             type: 'global/updateState',
             payload: {
+              currentUser: {
+                name: response.data.user.name,
+                avatar: response.data.user.avatar,
+              },
               menus: moudleFormatter(response.data.user.modules)
             },
           });
