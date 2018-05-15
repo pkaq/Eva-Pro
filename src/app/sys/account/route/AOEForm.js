@@ -28,7 +28,7 @@ export default class AOEForm extends Component {
           if (r.success) {
             return callback();
           } else {
-            return callback('编码已存在');
+            return callback('该账号已存在');
           }
         });
     }
@@ -51,7 +51,7 @@ export default class AOEForm extends Component {
           if (r.success) {
             callback();
           } else {
-            callback('该账号已存在');
+            callback('该编码已存在');
           }
         });
     }
