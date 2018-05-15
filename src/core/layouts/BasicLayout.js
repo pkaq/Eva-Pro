@@ -118,7 +118,7 @@ export default class BasicLayout extends React.Component {
       }
     });
     if (currRouterData && currRouterData.name) {
-      title = `${currRouterData.name} - Ant Design Pro`;
+      title = `${currRouterData.name} - ${AppInfo.title}`;
     }
     return title;
   }
