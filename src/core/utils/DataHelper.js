@@ -32,13 +32,15 @@ export function getNodeBorther(data, targetPid) {
   if ('0' === targetPid || 0 === targetPid || '-' === targetPid) {
     dude = [...data];
   } else {
-    data.forEach(item => {
-      if (item.id === targetPid) {
-        dude = [...item.children];
-      } else if (item.children) {
-        getNodeBorther(item.children, targetPid);
-      }
-    });
+    if (data && data.length > 1){
+      data.forEach(item => {
+        if (item.id === targetPid) {
+          dude = [...item.children];
+        } else if (item.children) {
+          getNodeBorther(item.children, targetPid);
+        }
+      });
+    }
   }
   return dude;
 }

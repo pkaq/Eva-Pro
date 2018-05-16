@@ -79,7 +79,7 @@ export default class OrgList extends Component {
     // 存在子节点的不允许删除
     const blockItem = hasChildren(data, selectedRowKeys);
 
-    if (!!record.isLeaf || blockItem) {
+    if (record.isLeaf || blockItem) {
       message.error(`错误： [${record.name}] 存在子节点,无法删除.`);
     } else {
       dispatch({
