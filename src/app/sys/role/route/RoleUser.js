@@ -10,18 +10,19 @@ export default class RoleUser extends PureComponent {
   handleSubmit = () => {
     const { currentItem } = this.props;
     const { checked } = { ...this.props.data };
+    if( checked && checked.length > 0){
+      const users = checked.map(item => {
+        return { userId: item };
+      });
 
-    const users = checked.map(item => {
-      return { userId: item };
-    });
-
-    this.props.dispatch({
-      type: 'role/saveUser',
-      payload: {
-        id: currentItem.id,
-        users,
-      },
-    });
+      this.props.dispatch({
+        type: 'role/saveUser',
+        payload: {
+          id: currentItem.id,
+          users,
+        },
+      });
+    }
   };
   // 保存已选
   handleSelectRows = checkedKeys => {
