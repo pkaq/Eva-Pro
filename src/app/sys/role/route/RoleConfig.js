@@ -9,7 +9,7 @@ export default class RoleConfig extends PureComponent {
         visible={operateType === 'Config'}
         title="选择授权参数"
         okText="保存"
-        cancelText="取消"
+        cancelText="关闭"
         onCancel={() => this.props.handleCancel()}
         width={400}
         bodyStyle={{ height: 480, overflowY: 'auto', overflowX: 'auto' }}

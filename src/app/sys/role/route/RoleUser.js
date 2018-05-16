@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Modal, Table } from 'antd';
+import { Modal, Table, message} from 'antd';
 import styles from './Index.less';
 // 授权用户窗口
 export default class RoleUser extends PureComponent {
@@ -10,19 +10,19 @@ export default class RoleUser extends PureComponent {
   handleSubmit = () => {
     const { currentItem } = this.props;
     const { checked } = { ...this.props.data };
+    let users = [];
     if( checked && checked.length > 0){
-      const users = checked.map(item => {
+      users = checked.map(item => {
         return { userId: item };
       });
-
-      this.props.dispatch({
-        type: 'role/saveUser',
-        payload: {
-          id: currentItem.id,
-          users,
-        },
-      });
     }
+    this.props.dispatch({
+      type: 'role/saveUser',
+      payload: {
+        id: currentItem.id,
+        users,
+      },
+    });
   };
   // 保存已选
   handleSelectRows = checkedKeys => {
@@ -97,7 +97,7 @@ export default class RoleUser extends PureComponent {
         visible={operateType === 'User'}
         title="选择授权用户  "
         okText="保存"
-        cancelText="取消"
+        cancelText="关闭"
         onOk={() => this.handleSubmit()}
         onCancel={() => this.props.handleCancel()}
         width={750}

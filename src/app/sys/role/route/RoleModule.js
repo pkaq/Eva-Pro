@@ -57,7 +57,7 @@ export default class RoleModule extends PureComponent {
       <Modal
         title="选择授权模块"
         okText="保存"
-        cancelText="取消"
+        cancelText="关闭"
         onOk={() => this.handleSubmit()}
         onCancel={() => this.props.handleCancel()}
         visible={operateType === 'Module'}
