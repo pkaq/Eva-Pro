@@ -42,10 +42,12 @@ export const pageModel = modelExtend(model, {
       const { list, pagination } = payload;
       return {
         ...state,
-        list,
-        pagination: {
-          ...state.pagination,
-          ...pagination,
+        data: {
+          list,
+          pagination: {
+            ...state.pagination,
+            ...pagination,
+          },
         },
       };
     },

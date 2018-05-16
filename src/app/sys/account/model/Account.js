@@ -29,14 +29,12 @@ export default modelExtend(pageModel, {
     *fetchUser({ payload }, { call, put }) {
       const response = yield call(listUser, payload);
       yield put({
-        type: 'updateState',
+        type: 'querySuccess',
         payload: {
-          data: {
-            list: response.data.data,
-            pagination: {
-              total: response.data.total,
-              current: response.data.current,
-            },
+          list: response.data.data,
+          pagination: {
+            total: response.data.total,
+            current: response.data.current,
           },
         },
       });
