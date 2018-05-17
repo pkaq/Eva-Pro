@@ -26,3 +26,12 @@ export async function deleteModule(params) {
     },
   });
 }
+// 校验path唯一性
+export async function checkUnique(params) {
+  return request('/module/checkUnique', {
+    method: 'POST',
+    body: {
+      ...params,
+    },
+  });
+}

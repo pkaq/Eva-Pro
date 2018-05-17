@@ -1,4 +1,5 @@
 import modelExtend from 'dva-model-extend';
+import { message } from 'antd';
 import { model } from 'core/common/BaseModel';
 import {
   listDict,
@@ -62,6 +63,8 @@ export default modelExtend(model, {
             itemValues: {},
           },
         });
+      } else {
+        message.error(`操作失败： ${response.statusText? response.statusText: '请联系管理员'}.`);
       }
     },
     // 新增/编辑字典项

@@ -15,15 +15,9 @@ const App = WrappedComponent => {
     componentWillMount() {
       console.info("app componentWillMount");
       // state中是否存在？
-      console.info(this.props.global);
       if(cookie.load('eva_token')){
-        console.info('a');
         if(!!this.props.global.menus){
-          console.info('b');
           if(localStorage.getItem('eva_user')){
-            console.info('e');
-            console.info(localStorage);
-            console.info(JSON.parse(localStorage.getItem('eva_user')).modules);
             this.props.dispatch({
               type: 'global/updateState',
               payload: {

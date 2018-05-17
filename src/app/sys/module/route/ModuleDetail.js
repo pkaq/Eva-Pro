@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Input, InputNumber, Modal, Switch, TreeSelect } from 'antd';
-import { filterTreeByAttr } from '../../../../core/utils/DataHelper';
+import { filterTreeByAttr } from 'core/utils/DataHelper';
 
 const FormItem = Form.Item;
 const Area = Input.TextArea;
@@ -21,6 +21,32 @@ export default class ModuleDetail extends Component {
       },
     });
   };
+  // 校验路径唯一性
+  checkPath = (rule, value, callback) => {
+    const { getFieldValue } = this.props.form;
+    const that = this;
+    const path = getFieldValue('path');
+    const parentId = getFieldValue('parentId');
+    const { currentItem } = this.props;
+    if (currentItem && currentItem.id && value === currentItem.path) {
+      return callback();
+    } else {
+      const data = { path, parentId };
+      that.props
+        .dispatch({
+          type: 'module/checkUnique',
+          payload: data,
+        })
+        .then(r => {
+          if (r.success) {
+            return callback();
+          } else {
+            return callback('该路径已存在');
+          }
+        });
+    }
+  };
+
   // 渲染树节点 - 剔除状态为停用状态(0000)得节点
   renderTreeNodes = data => {
     return data
@@ -56,7 +82,8 @@ export default class ModuleDetail extends Component {
   handleSaveClick = () => {
     const { dispatch, currentItem } = this.props;
     const { getFieldsValue, validateFields } = this.props.form;
-    validateFields(errors => {
+    // 对校验过的表单域 再进行一次强制表单校验
+    validateFields({force: true}, errors => {
       if (errors) {
         return;
       }
@@ -109,11 +136,10 @@ export default class ModuleDetail extends Component {
           <FormItem label="path" hasFeedback {...formRowOne}>
             {getFieldDecorator('path', {
               initialValue: currentItem.path,
+              validateTrigger: 'onBlur',
               rules: [
-                {
-                  required: true,
-                  message: '请输入path',
-                },
+                {required: true,message: '请输入path',},
+                { validator: this.checkPath},
               ],
             })(<Input />)}
           </FormItem>

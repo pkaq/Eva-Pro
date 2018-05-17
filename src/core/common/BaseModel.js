@@ -37,15 +37,9 @@ export const pageModel = modelExtend(model, {
   reducers: {
     // 查询成功
     querySuccess(state, { payload }) {
-      const { pagination } = payload;
-      console.info("-----");
-      console.info(pagination);
-      console.info(state.pagination);
       return {
         ...state,
-        data: {
-          ...payload
-        },
+        ...payload
       };
     },
   },

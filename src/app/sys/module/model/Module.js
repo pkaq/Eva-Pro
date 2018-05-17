@@ -1,7 +1,7 @@
 import modelExtend from 'dva-model-extend';
 import { model } from 'core/common/BaseModel';
 import { message } from 'antd';
-import { editModule, getModule, listModule, deleteModule } from '../service/Module';
+import { editModule, getModule, listModule, deleteModule, checkUnique } from '../service/Module';
 
 export default modelExtend(model, {
   namespace: 'module',
@@ -12,6 +12,10 @@ export default modelExtend(model, {
     formValues: {},
   },
   effects: {
+    // 校验路径唯一性
+    *checkUnique({ payload }, { call }) {
+      return yield call(checkUnique, payload);
+    },
     // 查询
     *listModule({ payload }, { call, put }) {
       // 查询数据
@@ -100,6 +104,7 @@ export default modelExtend(model, {
           callback();
         }
       } else {
+        message.error(`操作失败： ${response.statusText? response.statusText: '请联系管理员'}.`);
         yield put({
           type: 'updateState',
           payload: {
