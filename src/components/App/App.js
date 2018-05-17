@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
+import cookie from 'react-cookies';
 import Loader from '../Loader';
+import { routerRedux } from 'dva/router';
+import { setAuthority } from 'core/utils/authority';
+import { reloadAuthorized } from 'core/utils/Authorized';
 import { getRouterData } from '../../core/common/router';
 
 const App = WrappedComponent => {
@@ -11,6 +15,29 @@ const App = WrappedComponent => {
     componentWillMount() {
       console.info("app componentWillMount");
       // state中是否存在？
+      console.info(this.props.global);
+      if(cookie.load('eva_token')){
+        console.info('a');
+        if(!!this.props.global.menus){
+          console.info('b');
+          if(localStorage.getItem('eva_user')){
+            console.info('e');
+            console.info(localStorage);
+            console.info(JSON.parse(localStorage.getItem('eva_user')).modules);
+            this.props.dispatch({
+              type: 'global/updateState',
+              payload: {
+                menus: JSON.parse(localStorage.getItem('eva_user')).modules
+              }
+            })
+          }
+        }
+      } else {
+        setAuthority('');
+        reloadAuthorized();
+        routerRedux.push('/')
+      }
+
       // localstorage中是否存在？
       // 根据用户信息远程加载
 

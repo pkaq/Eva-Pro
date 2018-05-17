@@ -67,7 +67,7 @@ export default {
           // 1 day
           maxAge: 60 * 60 * 24,
         });
-        localStorage.setItem('eva_user', response.data.user);
+        localStorage.setItem('eva_user', JSON.stringify(response.data.user));
         reloadAuthorized();
         yield put(routerRedux.push('/'));
       }
