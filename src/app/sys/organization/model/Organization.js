@@ -1,7 +1,7 @@
 import modelExtend from 'dva-model-extend';
 import { model } from 'core/common/BaseModel';
 import { message } from 'antd';
-import { editOrg, getOrg, listOrg, deleteOrg } from '../service/Organization';
+import { editOrg, getOrg, listOrg, deleteOrg, switchStatus } from '../service/Organization';
 
 export default modelExtend(model, {
   namespace: 'organization',
@@ -73,12 +73,13 @@ export default modelExtend(model, {
     },
     // 更改可用状态
     *changeStatus({ payload }, { call, put }) {
-      const response = yield call(editOrg, payload);
-      if (response) {
-        payload.record.status = payload.status;
+      const response = yield call(switchStatus, payload);
+      if (response && response.success) {
         yield put({
           type: 'updateState',
-          currentItem: payload.record,
+          payload: {
+            data: response.data,
+          }
         });
       }
     },

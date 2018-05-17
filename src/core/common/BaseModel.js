@@ -1,7 +1,6 @@
 import modelExtend from 'dva-model-extend';
 
 export const model = {
-  namespace: 'model',
   state: {
     data: [],
     loading: true,
@@ -23,7 +22,6 @@ export const model = {
 };
 
 export const pageModel = modelExtend(model, {
-  namespace: 'pageModel',
   state: {
     data: {
       list: [],
@@ -39,15 +37,14 @@ export const pageModel = modelExtend(model, {
   reducers: {
     // 查询成功
     querySuccess(state, { payload }) {
-      const { list, pagination } = payload;
+      const { pagination } = payload;
+      console.info("-----");
+      console.info(pagination);
+      console.info(state.pagination);
       return {
         ...state,
         data: {
-          list,
-          pagination: {
-            ...state.pagination,
-            ...pagination,
-          },
+          ...payload
         },
       };
     },

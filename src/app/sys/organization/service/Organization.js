@@ -22,6 +22,15 @@ export async function editOrg(params) {
     },
   });
 }
+// 切换可用状态
+export async function switchStatus(params){
+  return request('/organization/switchStatus', {
+    method: 'POST',
+    body: {
+      ...params,
+    },
+  });
+}
 // 根据ID删除组织
 export async function deleteOrg(params) {
   return request('/organization/del', {

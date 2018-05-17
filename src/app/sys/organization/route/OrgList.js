@@ -69,7 +69,6 @@ export default class OrgList extends Component {
       payload: {
         id: record.id,
         status: status,
-        record,
       },
     });
   };

@@ -136,8 +136,6 @@ export default class List extends PureComponent {
     ];
 
     const paginationProps = {
-      showSizeChanger: true,
-      showQuickJumper: true,
       ...pagination,
     };
 
