@@ -43,7 +43,7 @@ export const getFlatMenuKeys = menu =>
  * @param  flatMenuKeys: [/abc, /abc/:id, /abc/:id/info]
  * @param  paths: [/abc, /abc/11, /abc/11/info]
  */
-export const getMeunMatchKeys = (flatMenuKeys, paths) =>
+export const getMenuMatchKeys = (flatMenuKeys, paths) =>
   paths
     .reduce((matchKeys, path) => (
       matchKeys.concat(
@@ -76,7 +76,7 @@ export default class SiderMenu extends PureComponent {
    */
   getDefaultCollapsedSubMenus(props) {
     const { location: { pathname } } = props || this.props;
-    return getMeunMatchKeys(this.flatMenuKeys, urlToList(pathname));
+    return getMenuMatchKeys(this.flatMenuKeys, urlToList(pathname));
   }
   /**
    * 判断是否是http链接.返回 Link 或 a
@@ -165,7 +165,7 @@ export default class SiderMenu extends PureComponent {
   // Get the currently selected menu
   getSelectedMenuKeys = () => {
     const { location: { pathname } } = this.props;
-    return getMeunMatchKeys(this.flatMenuKeys, urlToList(pathname));
+    return getMenuMatchKeys(this.flatMenuKeys, urlToList(pathname));
   };
   // conversion Path
   // 转化路径
