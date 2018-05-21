@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Row, Col, Form, Input, InputNumber, Modal, Switch, TreeSelect } from 'antd';
+import { Row, Col, Form, Input, InputNumber, Modal, Switch, TreeSelect, Select } from 'antd';
 
 const FormItem = Form.Item;
 const Area = Input.TextArea;
 const TreeNode = TreeSelect.TreeNode;
+const Option = Select.Option;
 
 @Form.create()
 export default class AOEForm extends Component {
@@ -132,7 +133,7 @@ export default class AOEForm extends Component {
       <Modal
         onCancel={() => this.handleCloseForm()}
         visible={modalType !== ''}
-        width={600}
+        width={660}
         onOk={() => this.handleSaveClick()}
         title={
           modalType === 'create'
@@ -210,13 +211,8 @@ export default class AOEForm extends Component {
               <FormItem label="电话" hasFeedback {...formItemLayout}>
                 {getFieldDecorator('tel', {
                   initialValue: item.tel,
-                  rules: [
-                    {
-                      type: 'number',
-                      message: '请输入电话',
-                    },
-                  ],
-                })(<InputNumber />)}
+                })(  <Input addonBefore="86" type="tel"
+                            style={{ width: '100%' }} />)}
               </FormItem>
             </Col>
             <Col span={12}>
