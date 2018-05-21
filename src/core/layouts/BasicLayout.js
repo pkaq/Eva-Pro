@@ -1,28 +1,28 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Icon, message, BackTop, Popover } from 'antd';
+import {BackTop, Icon, Layout, message, Popover} from 'antd';
 import DocumentTitle from 'react-document-title';
-import { connect } from 'dva';
-import { Route, Redirect, Switch, routerRedux } from 'dva/router';
-import { ContainerQuery } from 'react-container-query';
+import {connect} from 'dva';
+import {Redirect, Route, routerRedux, Switch} from 'dva/router';
+import {ContainerQuery} from 'react-container-query';
 import classNames from 'classnames';
 import pathToRegexp from 'path-to-regexp';
-import { enquireScreen, unenquireScreen } from 'enquire-js';
+import {enquireScreen, unenquireScreen} from 'enquire-js';
 import NProgress from 'nprogress';
 import GlobalHeader from 'components/GlobalHeader';
 import GlobalFooter from 'components/GlobalFooter';
 import SiderMenu from 'components/SiderMenu';
 import NotFound from '../../app/error/route/404';
-import { getRoutes } from '../utils/utils';
+import {getRoutes} from '../utils/utils';
 import Authorized from '../utils/Authorized';
 import logo from '../../assets/logo.svg';
 import pkaq from '../../assets/pkaq.svg';
-
-const { Content, Header, Footer } = Layout;
 import themeBlue from 'core/style/theme-blue.less';
 import themeGreen from 'core/style/theme-green.less';
 import App from 'components/App/App';
 import * as AppInfo from 'core/common/AppInfo';
+import style from './BasicLayOut.less';
+const { Content, Header, Footer } = Layout;
 
 let lastHref;
 const { AuthorizedRoute, check } = Authorized;
@@ -240,7 +240,7 @@ export default class BasicLayout extends React.Component {
           isMobile={this.state.isMobile}
           onCollapse={this.handleMenuCollapse}
         />
-        <Layout style={{ height: '100vh', overflow: 'scroll' }}>
+        <Layout style={{ height: '100vh', overflow: 'hidden'}}>
           <Header style={{ padding: 0 }}>
             <GlobalHeader
               logo={logo}
@@ -255,7 +255,8 @@ export default class BasicLayout extends React.Component {
               onNoticeVisibleChange={this.handleNoticeVisibleChange}
             />
           </Header>
-          <Content style={{ margin: '24px 24px 0', height: '100%' }}>
+          <Layout className={style.rightWrapper}>
+          <Content style={{ margin: '24px 24px 0', height: '100%'}}>
             <Switch>
               {redirectData.map(item => (
                 <Redirect key={item.from} exact from={item.from} to={item.to} />
@@ -309,6 +310,7 @@ export default class BasicLayout extends React.Component {
               }
             />
           </Footer>
+          </Layout>
         </Layout>
       </Layout>
     );
