@@ -40,3 +40,12 @@ export async function deleteOrg(params) {
     },
   });
 }
+// 校验path唯一性
+export async function checkUnique(params) {
+  return request('/organization/checkUnique', {
+    method: 'POST',
+    body: {
+      ...params,
+    },
+  });
+}

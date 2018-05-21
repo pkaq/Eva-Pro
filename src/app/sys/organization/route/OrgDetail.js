@@ -21,6 +21,30 @@ export default class OrgDetail extends Component {
       },
     });
   };
+  // 校验编码唯一性
+  checkCode = (rule, value, callback) => {
+    const { getFieldValue } = this.props.form;
+    const that = this;
+    const code = getFieldValue('code');
+    const { currentItem } = this.props;
+    if (currentItem && currentItem.id && value === currentItem.code) {
+      return callback();
+    } else {
+      const data = { code };
+      that.props
+        .dispatch({
+          type: 'organization/checkUnique',
+          payload: data,
+        })
+        .then(r => {
+          if (r.success) {
+            return callback();
+          } else {
+            return callback('该编码已存在');
+          }
+        });
+    }
+  };
   // 渲染树节点 - 剔除状态为停用状态(0000)得节点
   renderTreeNodes = data => {
     return data
@@ -113,11 +137,10 @@ export default class OrgDetail extends Component {
               <FormItem label="编码" hasFeedback {...formItemLayout}>
                 {getFieldDecorator('code', {
                   initialValue: currentItem.code,
+                  validateTrigger: 'onBlur',
                   rules: [
-                    {
-                      required: true,
-                      message: '请输入编码',
-                    },
+                    { required: true, message: '请输入编码',},
+                    { validator: this.checkCode},
                   ],
                 })(<Input />)}
               </FormItem>

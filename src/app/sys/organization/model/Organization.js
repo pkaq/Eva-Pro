@@ -1,7 +1,7 @@
 import modelExtend from 'dva-model-extend';
 import { model } from 'core/common/BaseModel';
 import { message } from 'antd';
-import { editOrg, getOrg, listOrg, deleteOrg, switchStatus } from '../service/Organization';
+import { editOrg, getOrg, listOrg, deleteOrg, switchStatus, checkUnique } from '../service/Organization';
 
 export default modelExtend(model, {
   namespace: 'organization',
@@ -12,6 +12,10 @@ export default modelExtend(model, {
     formValues: {},
   },
   effects: {
+    // 校验路径唯一性
+    *checkUnique({ payload }, { call }) {
+      return yield call(checkUnique, payload);
+    },
     // 查询
     *listOrg({ payload }, { call, put }) {
       // 查询数据
