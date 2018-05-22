@@ -90,12 +90,12 @@ export default class DictGrid extends PureComponent {
               <Card
                 actions={[
                   <Tooltip placement="bottom" title="新建分类">
-                    <Icon type="edit" onClick={e => this.handleAddClick()} />
+                    <Icon type="edit" onClick={e => this.handleAddClick()} />新建分类
                   </Tooltip>,
                   <div> </div>,
                 ]}
               >
-                类型选择
+                字典分类
               </Card>
             );
           }}
