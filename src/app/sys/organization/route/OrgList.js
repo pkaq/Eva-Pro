@@ -39,7 +39,9 @@ export default class OrgList extends Component {
       type: 'organization/create',
       payload: {
         modalType: 'create',
-        currentItem: {},
+        currentItem: {
+          parentId: record.id
+        },
         parent: id,
       },
     });
