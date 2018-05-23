@@ -15,16 +15,16 @@ PKAQ Design => Ant Design Pro
  - [saga入门] (https://www.jianshu.com/p/89ed2a01a3db)
 ---
 目录说明   
-dist: 打包目录
-mock： mock data
-public： 公共资源
-src
-  app 模块目录
-  assets 资源目录
-  core 框架核心
-  component  自定义组件   
-   |- App： 高阶组件   
-   |- Page： 内页包装器    
+- dist: 打包目录   
+- mock： mock data   
+- public： 公共资源   
+- src   
+  - app 模块目录   
+  - assets 资源目录   
+  - core 框架核心   
+  - component  自定义组件      
+   - |- App： 高阶组件      
+   - |- Page： 内页包装器       
 
 TIP: - 代码里针对namespace和model文件名进行了忽略大小写的处理
      - reducer名字和effects名字不要重复,否在再调用得时候会出现混乱(优先effects>reducer)
