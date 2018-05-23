@@ -35,13 +35,13 @@ export default class ModuleList extends Component {
   }
   // 新增
   handleAdd = record => {
-    const id = Object === typeof record ? record.parent : '';
     this.props.dispatch({
       type: 'module/create',
       payload: {
         modalType: 'create',
-        currentItem: {},
-        parent: id,
+        currentItem: {
+          parentId: record.id
+        }
       },
     });
   };
