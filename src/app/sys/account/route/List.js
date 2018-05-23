@@ -82,6 +82,11 @@ export default class List extends PureComponent {
 
     const columns = [
       {
+        render: (t,r,i)=>{
+          return i;
+        }
+      },
+      {
         title: '编码',
         dataIndex: 'code',
         sorter: true,
