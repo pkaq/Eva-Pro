@@ -13,6 +13,13 @@ export async function listOrg(params) {
 export async function listOrgByAttr(params) {
   return request(`/organization/listOrgByAttr/?${stringify(params)}`);
 }
+// 排序组织信息
+export async function sortOrg(params) {
+  return request('/organization/sort', {
+    method: 'POST',
+    body: params
+  });
+}
 // 新增/编辑组织信息
 export async function editOrg(params) {
   return request('/organization/edit', {
