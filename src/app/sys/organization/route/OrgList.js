@@ -205,6 +205,7 @@ export default class OrgList extends Component {
       {
         title: '操作',
         render: (text, record) => (
+         '0001' === record.status &&
           <div>
             <a onClick={e => this.handleEdit(record)}>编辑</a>
             <Divider type="vertical" />

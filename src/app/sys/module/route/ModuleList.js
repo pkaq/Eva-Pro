@@ -35,13 +35,15 @@ export default class ModuleList extends Component {
   }
   // 新增
   handleAdd = record => {
+    const parentId =  '0001' === record.status? {
+      parentId: record.id
+    } : {};
+
     this.props.dispatch({
       type: 'module/create',
       payload: {
         modalType: 'create',
-        currentItem: {
-          parentId: record.id
-        }
+        currentItem: parentId
       },
     });
   };
@@ -213,6 +215,7 @@ export default class ModuleList extends Component {
       {
         title: '操作',
         render: (text, record) => (
+          record.status === '0001' &&
           <div>
             <a onClick={e => this.handleEdit(record)}>编辑</a>
             <Divider type="vertical" />
