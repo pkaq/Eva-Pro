@@ -49,9 +49,10 @@ export default class ModuleDetail extends Component {
 
   // 渲染树节点 - 剔除状态为停用状态(0000)得节点
   renderTreeNodes = data => {
+    const { currentItem } = this.props;
     return data
       .map(item => {
-        if ('0001' === item.status) {
+        if ('0001' === item.status && item.id !== currentItem.id) {
           if (item.children) {
             return (
               <TreeNode
