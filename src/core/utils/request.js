@@ -53,7 +53,7 @@ export default function request(url, options) {
         'Content-Type': 'application/json; charset=utf-8',
         ...newOptions.headers,
       };
-      newOptions.data = JSON.stringify(newOptions.body);
+      newOptions.data = newOptions.body;
     } else {
       newOptions.headers = {
         Accept: 'application/json',
@@ -65,6 +65,7 @@ export default function request(url, options) {
     url: AppInfo.request_prefix+url,
     ...newOptions,
   };
+  console.info(newOptions);
   if('/auth/login' === url ){
     config.headers ={
       'Authorization': 'login'

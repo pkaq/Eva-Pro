@@ -1,7 +1,7 @@
 import modelExtend from 'dva-model-extend';
 import { model } from 'core/common/BaseModel';
 import { message } from 'antd';
-import { editModule, getModule, listModule, deleteModule, checkUnique } from '../service/Module';
+import { editModule, getModule, listModule, deleteModule, checkUnique, sortModule } from '../service/Module';
 
 export default modelExtend(model, {
   namespace: 'module',
@@ -46,6 +46,18 @@ export default modelExtend(model, {
           payload: {
             modalType: 'edit',
             currentItem: response.data,
+          },
+        });
+      }
+    },
+    // 排序
+    *sortModule({ payload }, { call, put }) {
+      const response = yield call(sortModule, payload);
+      if (response && response.data) {
+        yield put({
+          type: 'updateState',
+          payload: {
+            data: response.data,
           },
         });
       }

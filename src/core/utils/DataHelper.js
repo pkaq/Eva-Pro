@@ -29,7 +29,7 @@ export function filterID(data, id, itemArray) {
  */
 export function getNodeBorther(data, targetPid) {
   let dude = [];
-  if ('0' === targetPid || 0 === targetPid || '-' === targetPid) {
+  if ('0' === targetPid || 0 === targetPid || '-' === targetPid || '' === targetPid || !targetPid) {
     dude = [...data];
   } else {
     if (data && data.length > 1){

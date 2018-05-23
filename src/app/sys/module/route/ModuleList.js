@@ -128,12 +128,11 @@ export default class ModuleList extends Component {
       payload: { selectedRowKeys: rows },
     });
   };
-
   //排序操作
   handleSort = (nodes, index, upOrDown) => {
-    let orginOrders = nodes[index].orders;
+    let orginOrders = index;
     let targetID = 'up' === upOrDown ? nodes[index - 1].id : nodes[index + 1].id;
-    let targetOrders = 'up' === upOrDown ? nodes[index - 1].orders : nodes[index + 1].orders;
+    let targetOrders = 'up' === upOrDown ? index-1 : index+1;
     const switchObj = [
       {
         id: nodes[index].id,
@@ -162,7 +161,7 @@ export default class ModuleList extends Component {
       {
         title: '图标',
         dataIndex: 'icon',
-        render: (text, record) => <Icon type={text} />,
+        render: (text) => <Icon type={text} />,
       },
       {
         title: 'Path',
@@ -175,10 +174,9 @@ export default class ModuleList extends Component {
       {
         title: '排序',
         dataIndex: 'orders',
-        render: (text, record) => {
-          const brother = getNodeBorther(this.props.data, record.parentId);
+        render: (text, record, index) => {
+          const brother = getNodeBorther(data, record.parentId);
           const size = brother.length;
-          const index = brother.indexOf(record);
           return (
             <div>
               {text}

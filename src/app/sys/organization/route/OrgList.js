@@ -165,10 +165,9 @@ export default class OrgList extends Component {
       {
         title: '排序',
         dataIndex: 'orders',
-        render: (text, record) => {
+        render: (text, record, index) => {
           const brother = getNodeBorther(this.props.data, record.parentId);
           const size = brother.length;
-          const index = brother.indexOf(record);
           return (
             <div>
               {text}

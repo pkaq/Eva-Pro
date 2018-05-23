@@ -17,6 +17,13 @@ export async function editModule(params) {
     },
   });
 }
+// 排序组织信息
+export async function sortModule(params) {
+  return request('/module/sort', {
+    method: 'POST',
+    body: params
+  });
+}
 // 根据ID删除组织
 export async function deleteModule(params) {
   return request('/module/del', {
