@@ -40,12 +40,12 @@ const App = WrappedComponent => {
       const menus = this.props.global.menus;
       const routerConfig = this.props.routerConfig;
       const routerData = getRouterData(routerConfig, menus);
-
-      return menus.length === 0 ? (
-        <Loader fullScreen spinning />
-      ) : (
-        <WrappedComponent {...this.props} menus={menus} routerData={routerData} />
-      );
+      return  <Loader fullScreen spinning />;
+      // return menus.length === 0 ? (
+      //   <Loader fullScreen spinning />
+      // ) : (
+      //   <WrappedComponent {...this.props} menus={menus} routerData={routerData} />
+      // );
     }
   }
 

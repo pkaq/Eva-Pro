@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './index.less';
-
+import loading from '../../assets/loading.gif';
 const Loader = ({ spinning, fullScreen }) => {
   return (
     <div
@@ -12,10 +12,7 @@ const Loader = ({ spinning, fullScreen }) => {
       })}
     >
       <div className={styles.warpper}>
-        <div className={styles.inner} />
-        <div className={styles.text}>
-          <span>Loding...</span>
-        </div>
+        <img src={loading}/>
       </div>
     </div>
   );
