@@ -21,18 +21,6 @@ const codeMessage = {
   503: '服务不可用，服务器暂时过载或维护。',
   504: '网关超时。',
 };
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-
-  const errortext = response.statusText ? response.statusText : codeMessage[response.status];
-  const error = new Error(errortext);
-  error.url = response.config.url;
-  error.name = response.status;
-  error.response = response.data;
-  throw error;
-}
 
 /**
  * Requests a URL, returning a promise.
@@ -65,7 +53,7 @@ export default function request(url, options) {
     url: AppInfo.request_prefix+url,
     ...newOptions,
   };
-  console.info(newOptions);
+
   if('/auth/login' === url ){
     config.headers ={
       'Authorization': 'login'
@@ -77,20 +65,20 @@ export default function request(url, options) {
   }
   return ax
     .request(config)
-    .then(checkStatus)
     .then(response => {
       return response.data;
     })
     .catch(e => {
       const { dispatch } = store;
-      const status = e.name;
-      const url = e.url;
+      const response = e.response;
+      const status = response.status;
 
-      Promise.resolve(e.response).then(r => {
-        notification.error({
-          message: `请求错误 : ${url}`,
-          description: r ? `${r.statusText}` : '服务器错误',
-        });
+      const errortext = response.statusText ? response.statusText : codeMessage[response.status];
+      const url = response.config.url;
+
+      notification.error({
+        message: `请求错误 : ${url}`,
+        description: errortext ? errortext : '服务器错误',
       });
 
       if (status === 401) {
