@@ -1,5 +1,3 @@
-import modelExtend from 'dva-model-extend';
-
 export const model = {
   state: {
     data: [],
@@ -21,8 +19,9 @@ export const model = {
   },
 };
 
-export const pageModel = modelExtend(model, {
+export const pageModel = {
   state: {
+    loading: true,
     data: {
       list: [],
       pagination: {
@@ -42,5 +41,17 @@ export const pageModel = modelExtend(model, {
         ...payload
       };
     },
+    updateState(state, { payload }) {
+      return {
+        ...state,
+        ...payload,
+      };
+    },
+    saveData(state, action) {
+      return {
+        ...state,
+        data: action.payload,
+      };
+    },
   },
-});
+};

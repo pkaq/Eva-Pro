@@ -93,10 +93,7 @@ export default class RoleGrid extends PureComponent {
 
   render() {
     const { list, pagination, selectedRowKeys, loading } = this.props;
-
     const paginationProps = {
-      showSizeChanger: true,
-      showQuickJumper: true,
       ...pagination,
     };
     const rowSelectionProps = {

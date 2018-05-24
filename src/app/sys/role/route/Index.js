@@ -12,9 +12,9 @@ import styles from './Index.less';
 const FormItem = Form.Item;
 
 @Form.create()
-@connect(({ role, loading }) => ({
-  role,
-  loading: loading.models.role,
+@connect( state => ({
+  role: state.role,
+  loading: state.loading.models.role,
 }))
 export default class Role extends PureComponent {
   // 关闭窗口
