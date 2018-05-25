@@ -163,7 +163,8 @@ export default class Role extends PureComponent {
     const { dispatch, loading } = this.props;
     const {
       modalType,
-      data,
+      list,
+      pagination,
       operateType,
       moduleData,
       userData,
@@ -174,8 +175,8 @@ export default class Role extends PureComponent {
     const listPops = {
       dispatch,
       loading,
-      list: data.list,
-      pagination: data.pagination,
+      list,
+      pagination,
       selectedRowKeys,
     };
 

@@ -216,13 +216,13 @@ export default class Account extends PureComponent {
   // 渲染界面
   render() {
     const { dispatch } = this.props;
-    const { loading, data, selectedRowKeys, orgData, modalType, currentItem } = this.props.account;
+    const { loading, list, pagination, selectedRowKeys, orgData, modalType, currentItem } = this.props.account;
 
     const listPops = {
       dispatch,
       loading,
-      list: data.list,
-      pagination: data.pagination,
+      list,
+      pagination,
       selectedRowKeys,
     };
 

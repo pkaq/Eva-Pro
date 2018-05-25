@@ -31,13 +31,14 @@ export default modelExtend(pageModel, {
       yield put({
         type: 'querySuccess',
         payload: {
-          data:{
-            list: response.data.data,
-            pagination: {
-              total: response.data.total,
-              current: response.data.current,
-            },
-          }
+          list: response.data.data,
+          pagination: {
+            showSizeChanger: true,
+            showQuickJumper: true,
+            showTotal: total => `共 ${total} 条`,
+            total: response.data.total,
+            current: response.data.current,
+          },
         },
       });
     },
@@ -63,12 +64,13 @@ export default modelExtend(pageModel, {
           payload: {
             modalType: '',
             currentItem: {},
-            data: {
-              list: response.data.data,
-              pagination: {
-                total: response.data.total,
-                current: response.data.current,
-              },
+            list: response.data.data,
+            pagination: {
+              showSizeChanger: true,
+              showQuickJumper: true,
+              showTotal: total => `共 ${total} 条`,
+              total: response.data.total,
+              current: response.data.current,
             },
           },
         });
@@ -92,12 +94,13 @@ export default modelExtend(pageModel, {
       yield put({
         type: 'querySuccess',
         payload: {
-          data: {
-            list: userData.data.data,
-            pagination: {
-              total: userData.data.total,
-              current: userData.data.current,
-            },
+          list: userData.data.data,
+          pagination: {
+            showSizeChanger: true,
+            showQuickJumper: true,
+            showTotal: total => `共 ${total} 条`,
+            total: userData.data.total,
+            current: userData.data.current,
           },
           orgData: treeData.data,
         },
@@ -116,12 +119,13 @@ export default modelExtend(pageModel, {
         yield put({
           type: 'updateState',
           payload: {
-            data: {
-              list: response.data.data,
-              pagination: {
-                total: response.data.total,
-                current: response.data.current,
-              },
+            list: response.data.data,
+            pagination: {
+              showSizeChanger: true,
+              showQuickJumper: true,
+              showTotal: total => `共 ${total} 条`,
+              total: response.data.total,
+              current: response.data.current,
             },
             selectedRowKeys: [],
           },
