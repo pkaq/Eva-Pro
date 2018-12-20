@@ -29,6 +29,6 @@ describe('Login', () => {
     await page.click('button[type="submit"]');
     await page.waitForSelector('.ant-layout-sider h1'); // should display error
     const text = await page.evaluate(() => document.body.innerHTML);
-    expect(text).toContain('<h1>Ant Design Pro</h1>');
+    expect(text).toContain('<h1>XiLai Tech Pro</h1>');
   });
 });

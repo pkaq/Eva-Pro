@@ -3,7 +3,7 @@ order: 0
 title: 图表套件组合展示
 ---
 
-利用 Ant Design Pro 提供的图表套件，可以灵活组合符合设计规范的图表来满足复杂的业务需求。
+利用 XiLai Tech Pro 提供的图表套件，可以灵活组合符合设计规范的图表来满足复杂的业务需求。
 
 ````jsx
 import { ChartCard, Field, MiniArea, MiniBar, MiniProgress } from 'ant-design-pro/lib/Charts';

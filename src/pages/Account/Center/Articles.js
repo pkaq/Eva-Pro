@@ -42,9 +42,9 @@ class Center extends PureComponent {
               }
               description={
                 <span>
-                  <Tag>Ant Design</Tag>
+                  <Tag>XiLai Tech</Tag>
                   <Tag>设计语言</Tag>
-                  <Tag>蚂蚁金服</Tag>
+                  <Tag>禧莱网络</Tag>
                 </span>
               }
             />

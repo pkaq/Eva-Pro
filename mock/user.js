@@ -8,7 +8,7 @@ export default {
     email: 'antdesign@alipay.com',
     signature: '海纳百川，有容乃大',
     title: '交互专家',
-    group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
+    group: '禧莱网络－某某某事业群－某某平台部－某某技术部－UED',
     tags: [
       {
         key: '0',
@@ -74,7 +74,7 @@ export default {
   ],
   'POST /api/login/account': (req, res) => {
     const { password, userName, type } = req.body;
-    if (password === 'ant.design' && userName === 'admin') {
+    if (password === 'XiLai.Tech' && userName === 'admin') {
       res.send({
         status: 'ok',
         type,
@@ -82,7 +82,7 @@ export default {
       });
       return;
     }
-    if (password === 'ant.design' && userName === 'user') {
+    if (password === 'XiLai.Tech' && userName === 'user') {
       res.send({
         status: 'ok',
         type,
