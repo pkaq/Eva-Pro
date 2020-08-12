@@ -1,3 +1,7 @@
+## 该仓库已放弃
+
+新的地址为: https://github.com/PKAQ-LAB/EVA-PRO
+
 ## 运行前需要安装
 
 - git
